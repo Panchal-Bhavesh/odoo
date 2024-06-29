@@ -1,0 +1,8 @@
+{% block content %}
+  <h2>Manage Facilities</h2>
+  <ul>
+    {% for facility in facilities %}
+      <li>{{ facility.name }} (Capacity: {{ facility.capacity }})</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% block content %}
+  <h2>Payment</h2>
+  <form action="{% url 'payment' booking.id %}" method="POST">
+    {% csrf_token %}
+    <script
+      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="{{ stripe_publishable_key }}"
+      data-amount="{{ booking.get_total_cost|floatformat:2|default_if_none:0|mul:100 }}"
+      data-name="Pet Boarding"
+      data-description="Booking ID: {{ booking.id }}"
+      data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+      data-locale="auto"
+      data-currency="usd">
+    </script>
+  </form>
+{% endblock %}
